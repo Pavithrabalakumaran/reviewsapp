@@ -21,8 +21,9 @@ class ReviewsCarousel extends Component {
 
   onClickLeftArrow = () => {
     const {activeReviewIndex} = this.state
+    const {reviewsList} = this.props
 
-    if (activeReviewIndex >= 0) {
+    if (activeReviewIndex > reviewsList.length) {
       this.setState(prevState => ({
         activeReviewIndex: prevState.activeReviewIndex - 1,
       }))
@@ -52,7 +53,7 @@ class ReviewsCarousel extends Component {
         <h1 className="heading"> Reviews</h1>
         <div className="review-container">
           <button
-            test-id="leftArrow"
+            data-testid="leftArrow"
             type="button"
             onClick={this.onClickLeftArrow}
             className="left-arrow"
@@ -65,7 +66,7 @@ class ReviewsCarousel extends Component {
           </button>
           {this.renderActiveReview(currentReviewDetails)}
           <button
-            test-id="rightArrow"
+            data-testid="rightArrow"
             type="button"
             onClick={this.onClickRightArrow}
             className="left-arrow"
